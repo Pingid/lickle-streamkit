@@ -1,0 +1,72 @@
+{
+  "name": "@lickle/streamkit",
+  "version": "0.0.1",
+  "description": "Minimal service coordination system with event-driven architecture and reactive streams",
+  "author": "Dan Beaven <dm.beaven@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pingid/lickle-streamkit.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/cjs/index.js",
+  "types": "lib/ts/index.d.ts",
+  "module": "lib/esm/index.js",
+  "sideEffects": false,
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./lib/ts/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./*": {
+      "types": "./lib/ts/*.d.ts",
+      "import": "./lib/esm/*.js",
+      "require": "./lib/cjs/*.js"
+    }
+  },
+  "files": [
+    "lib",
+    "src",
+    "README.md",
+    "package.json",
+    "!**/*.test.*",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "service",
+    "event",
+    "reactive",
+    "stream",
+    "observable",
+    "coordination",
+    "event-driven",
+    "microservices",
+    "architecture"
+  ],
+  "scripts": {
+    "build": "npm run typecheck && npm run esm && npm run cjs",
+    "format": "prettier --write .",
+    "esm": "tsc -p ./tsconfig.esm.json",
+    "cjs": "tsc -p ./tsconfig.cjs.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.1",
+    "jsr": "^0.13.5",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "@lickle/rx": "^0.0.1"
+  }
+}
